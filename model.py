@@ -39,9 +39,14 @@ def image_show(image_in_tensor):
   image = image.transpose(1,2,0)
   image = image*std_dev + mean
   image = image.clip(0,1) # To ensure that all pixel values are between 0 and 1
-  plt.imshow(image)
-  plt.show()
-
+  return image
+# Plotting the content image and style image
+plt.imshow(image_show(style))
+plt.title("Style image")
+plt.show()
+plt.imshow(image_show(content))
+plt.title("Content image")
+plt.show()
 # Defining the loss functions
 
 #1. Defining the content loss
@@ -116,5 +121,15 @@ for e in range(epochs):
     if e % display_every == 0:
         print(f'Step {e}, Total Loss: {total_loss.item()}')
 
-# Save the final result
+# Showing the final result
 final_img = image_show(target_image)
+final_img = image_show(target_image)
+plt.imshow(image_show(style))
+plt.title("Style image")
+plt.show()
+plt.imshow(image_show(content))
+plt.title("Content image")
+plt.show()
+plt.imshow(image_show(final_img))
+plt.title("Generated image")
+plt.show()

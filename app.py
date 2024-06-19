@@ -91,16 +91,16 @@ def generate_styled_image(content_path, style_path):
     parameter.requires_grad_(False)
 
   # Define the parameters for loss function i.e alpha and beta
-  alpha = 5
+  alpha = 1
   beta = 40
 
   # Create a target image(copy of the content image)
   target_image = content.clone().requires_grad_(True).to(device)
 
   # Define the hyperparameter
-  optimizer = optim.Adam([target_image], lr = 0.001)
+  optimizer = optim.Adam([target_image], lr = 0.003)
   # Define the number of epochs and display interval
-  epochs = 5000
+  epochs = 500
   display_every = 50
   for e in range(epochs):
     target_features = model(target_image)
@@ -132,7 +132,7 @@ def generate_styled_image(content_path, style_path):
   return generated_image_path
 
 # Creating tha API to handle the request and send the ouput image
-@app.route('/style_transfer', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
   error = None
   if request.method == 'POST':
@@ -151,7 +151,7 @@ def home():
       if generated_image_path:
         return render_template('index.html', generated_image_path=generated_image_path)
       else:
-        error = "An error occurred during image processing."
+        error = "Error in image processing "
     else:
       error = "Please upload both content and style images."
 

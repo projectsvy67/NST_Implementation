@@ -54,9 +54,9 @@
     </div>
 
     <script>
-        document.getElementById('contentImageInput').addEventListener('change', function (event) {
+        document.getElementById('contentImageInput').addEventListener('change', function(event) {
             var reader = new FileReader();
-            reader.onload = function () {
+            reader.onload = function() {
                 var output = document.getElementById('contentImagePreview');
                 output.src = reader.result;
                 output.style.display = 'block';
@@ -64,9 +64,9 @@
             reader.readAsDataURL(event.target.files[0]);
         });
 
-        document.getElementById('styleImageInput').addEventListener('change', function (event) {
+        document.getElementById('styleImageInput').addEventListener('change', function(event) {
             var reader = new FileReader();
-            reader.onload = function () {
+            reader.onload = function() {
                 var output = document.getElementById('styleImagePreview');
                 output.src = reader.result;
                 output.style.display = 'block';
@@ -74,42 +74,15 @@
             reader.readAsDataURL(event.target.files[0]);
         });
 
-        document.getElementById('submitButton').addEventListener('click', async function() {
-    const contentImageInput = document.getElementById('contentImageInput');
-    const styleImageInput = document.getElementById('styleImageInput');
-
-    // Check if both images are selected
-    if (!contentImageInput.files[0] || !styleImageInput.files[0]) {
-      alert('Please select both content and style images.');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('contentImage', contentImageInput.files[0]);
-    formData.append('styleImage', styleImageInput.files[0]);
-
-    // Make a POST request to the backend API endpoint
-    const response = await fetch('/style_transfer', {
-      method: 'POST',
-      body: formData
-    });
-
-    const data = await response.json();
-
-    if (data.generated_image) {
-      // Update generated image preview and download link
-      const generatedImage = document.getElementById('generatedImage');
-      generatedImage.src = data.generated_image_path; // Replace with actual path or data URL from backend
-      generatedImage.style.display = 'block';
-
-      const downloadLink = document.getElementById('downloadLink');
-      downloadLink.href = data.generated_image_path; // Set download link to the generated image URL
-      downloadLink.style.display = 'inline-block';
-    } else {
-      alert('An error occurred during image processing.');
-    }
-  });
-
+        document.getElementById('submitButton').addEventListener('click', function() {
+            var generatedImage = document.getElementById('generatedImage');
+            generatedImage.src = 'path/to/generated_image.png'; // Replace with actual path or data URL
+            generatedImage.style.display = 'block';
+            //downloadind the image
+            var downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = generatedImage.src;
+            downloadLink.style.display = 'inline-block';
+        });
     </script>
 </body>
 
