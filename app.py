@@ -1,8 +1,9 @@
 from flask import Flask,request, render_template, send_file
 from werkzeug.utils import secure_filename
 from datetime import time
+
 app = Flask(__name__)
-# app.config['UPLOAD_FOLDER']='uploads/'
+app.config['UPLOAD_FOLDER'] = 'static'  # Define a folder to save uploaded images
 
 import torch
 import torch.nn as nn
@@ -157,6 +158,5 @@ def home():
   return render_template('index.html', error=error)
 
 if __name__ == "__main__":
-  app.config['UPLOAD_FOLDER'] = 'uploads'  # Define a folder to save uploaded images
   app.secret_key = 'your_secret_key'  # Add a secret key for CSRF protection (optional)
   app.run(debug=True)
