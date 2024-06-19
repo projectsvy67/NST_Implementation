@@ -15,8 +15,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 #Loading and transforming the content image and style image
 import numpy as np
 image_size = 512 if torch.cuda.is_available() else 224
-content_image = "/content/Virat Kohli HD Wallpaper 4k.jpeg"
-style_image = "/content/style.jpeg"
+content_image = "/path/content_image"
+style_image = "/path/style_image"
 def load_and_transform_image(image_name):
   image = Image.open(image_name)
   image_transform = transforms.Compose([transforms.Resize((image_size,image_size)),

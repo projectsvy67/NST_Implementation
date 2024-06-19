@@ -1,6 +1,6 @@
-from flask import Flask,request, render_template, send_file
+from flask import Flask,request, render_template,jsonify, send_file
 from werkzeug.utils import secure_filename
-from datetime import time
+import uuid
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static'  # Define a folder to save uploaded images
@@ -125,14 +125,14 @@ def generate_styled_image(content_path, style_path):
   # Save the final result
   final_img = image_show(target_image)
   # Define a filename for the generated image (optional)
-  generated_filename = f"final_image_{int(time.time())}.jpeg"
+  generated_filename = f"final_image_{uuid.uuid4()}.jpeg"
 
-    # Generate the absolute path (considering the upload folder)
+  # Generate the absolute path (considering the upload folder)
   generated_image_path = os.path.join(app.config['UPLOAD_FOLDER'], generated_filename)
   return generated_image_path
 
-
-@app.route('/', methods=['GET', 'POST'])
+# Creating tha API to handle the request and send the ouput image
+@app.route('/style_transfer', methods=['GET', 'POST'])
 def home():
   error = None
   if request.method == 'POST':
