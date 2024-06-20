@@ -9,13 +9,15 @@ This project is implementation of the paper "A Neural Algorithm of Artistic Styl
 ## Installation
 To get started with Neural Style Transfer modol follow these steps.
 <br>
-1.###Clone the Repository:
+Please Note: Only model.py, neural_style_transfer.ipynb, report_neural_style_transfer.pdf and reuirements.txt are working. I could not integrate the frontend with the model
+<br>
+1.## Clone the Repository:
 <br>
 git clone https://github.com/projectsvy67/NST_Implementation.git
 <br>
 cd NST_Implementation
 <br>
-2.### Install dependencies
+2.## Install dependencies
 <br>
 Ensure you have Python 3.7+ installed. Then, install the required Python packages:
 pip install -r requirements.txt
