@@ -8,13 +8,18 @@ This project is implementation of the paper "A Neural Algorithm of Artistic Styl
 
 ## Installation
 To get started with Neural Style Transfer modol follow these steps.
-1.###Clone the Repository: 
+<br>
+1.###Clone the Repository:
+<br>
 git clone https://github.com/projectsvy67/NST_Implementation.git
+<br>
 cd NST_Implementation
+<br>
 2.### Install dependencies
+<br>
 Ensure you have Python 3.7+ installed. Then, install the required Python packages:
 pip install -r requirements.txt
-
+<br>
 ## References
 "A Neural Algorithm of Artistic Style" by
 Leon A. Gatys, Alexander S. Ecker, Matthias Bethge.
